@@ -1,36 +1,39 @@
-Role Name
-=========
+# fullstack_deploy (Ansible Role)
 
-A brief description of the role goes here.
+![Ansible](https://img.shields.io/badge/Ansible-Role-blue?style=flat-square)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-Requirements
-------------
+## Description
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This Ansible role deploys a complete **fullstack web application** using:
 
-Role Variables
---------------
+- **Node.js** (backend)
+- **Nginx** (reverse proxy)
+- **Systemd service** for process management
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+It sets up the environment, installs dependencies, and ensures the app is served via Nginx on port 80.
 
-Dependencies
-------------
+---
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+## Requirements
 
-Example Playbook
-----------------
+- Ubuntu 20.04 or 22.04
+- Ansible 2.9+
+- Node.js & npm installed via the role
+- SSH access to the target host
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+---
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+## Role Variables
 
-License
--------
+You can customize the following variables (see `defaults/main.yml`):
 
-BSD
+```yaml
+app_user: "nobody"
+app_group: "nogroup"
+app_port: 3000
+app_dir: /var/www/todo-app
+
 
 Author Information
 ------------------
